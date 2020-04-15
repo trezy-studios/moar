@@ -1,0 +1,7 @@
+Credit for the current sprites goes to the following artists:
+
+Name: 0x72
+URL: https://0x72.itch.io/
+Spritesheets:
+- DungeonUI: https://0x72.itch.io/dungeonui
+- Dungeon Tileset II: https://0x72.itch.io/dungeontileset-ii

@@ -1,0 +1,9 @@
+.slide-out-panel {
+  --panel-inset: 2px;
+
+  bottom: var(--panel-inset);
+  left: 100%;
+  position: absolute;
+  top: var(--panel-inset);
+  transform: translateX(calc((100% + var(--panel-inset)) * -1));
+}

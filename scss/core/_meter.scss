@@ -1,0 +1,26 @@
+meter {
+  appearance: none;
+  background-color: var(--transparent);
+  background-image: none;
+  border-radius: 0;
+  overflow: hidden;
+  width: 100%;
+
+  &::-moz-meter-bar,
+  &::-webkit-meter-bar {
+    background-color: var(--meter-fill-color);
+    background-image: none;
+    border: 0;
+    clip-path: polygon(
+      0 0,
+      calc(100% - 2px) 0,
+      calc(100% - 2px) 1px,
+      calc(100% - 1px) 1px,
+      calc(100% - 1px) 2px,
+      100% 2px,
+      100% 3px,
+      0 3px,
+    );
+    margin-right: -3px;
+  }
+}

@@ -1,0 +1,16 @@
+.inventory {
+  ol {
+    display: grid;
+    overflow: auto;
+    grid-auto-rows: 16px;
+    grid-template-columns: repeat(4, 16px);
+  }
+
+  .item {
+    background-image: url(/game-assets/grid-slot.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+  }
+}

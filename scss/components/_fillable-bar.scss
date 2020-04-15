@@ -1,0 +1,17 @@
+.fillable-bar {
+  background-color: #222;
+  background-image: none;
+  border-color: transparent;
+  border-image-repeat: repeat;
+  border-image-slice: 2 4 fill;
+  border-image-source: url(/game-assets/fillable-bar.png);
+  border-style: solid;
+  border-width: 2px 4px;
+  display: flex;
+  height: 9px;
+  padding: 1px;
+
+  meter {
+    height: 3px;
+  }
+}

@@ -1,0 +1,88 @@
+.framed {
+  display: flex;
+  flex-direction: column;
+
+  > footer,
+  > header,
+  > .framed-content {
+    border-color: transparent;
+    border-image-outset: 1px;
+    border-image-repeat: repeat;
+    border-image-slice: 8 fill;
+    border-image-source: url(/game-assets/ui-frame.png);
+    border-style: solid;
+    border-width: 8px;
+  }
+
+  > .framed-content {
+    background-color: #222222;
+    border-bottom-width: 0;
+    border-top-width: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+
+    &.framed-dark {
+      border-left-width: 5px;
+      border-image-slice: 5 fill;
+      border-image-source: url(/game-assets/ui-frame-dark.png);
+      border-right-width: 5px;
+    }
+  }
+
+  > footer,
+  > header {
+    flex-grow: 0;
+    flex-shrink: 0;
+    position: relative;
+
+    &:after,
+    &:before {
+      border-image-repeat: repeat;
+      border-image-slice: 4 6 3;
+      border-image-source: url(/game-assets/ui-frame-horizontal-break.png);
+      border-style: solid;
+      border-width: 4px 6px 3px;
+      content: '';
+      display: block;
+      height: 0;
+      left: 0;
+      margin-left: -8px;
+      margin-right: -8px;
+      position: absolute;
+      right: 0;
+      z-index: 1;
+    }
+
+    &:after {
+      top: calc(100% - 1px);
+    }
+
+    &:before {
+      bottom: calc(100% - 1px);
+    }
+  }
+
+  header {
+    border-bottom-width: 0;
+    margin-bottom: 5px;
+
+    &:before {
+      display: none;
+    }
+  }
+
+  footer {
+    border-top-width: 0;
+    margin-top: 5px;
+
+    &:after {
+      display: none;
+    }
+  }
+
+  header + footer {
+    &:before {
+      display: none;
+    }
+  }
+}
