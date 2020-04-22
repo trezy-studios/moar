@@ -1,5 +1,5 @@
 // Local imports
-import { ItemCatalog } from '../helpers/ItemCatalog'
+import { AllCatalogs } from '../helpers/AllCatalogs'
 
 
 
@@ -7,14 +7,11 @@ import { ItemCatalog } from '../helpers/ItemCatalog'
 
 const getTotalInventoryWeight = options => {
   const {
-    itemCatalog,
     shouldRound,
     slots,
   } = options
 
-  if (!itemCatalog) {
-    itemCatalog = new ItemCatalog
-  }
+  const itemCatalog = AllCatalogs.items
 
   const totalWeight = Object.values(slots).reduce((accumulator, itemData) => {
     if (itemData) {
@@ -22,7 +19,7 @@ const getTotalInventoryWeight = options => {
         itemID,
         quantity,
       } = itemData
-      const item = itemCatalog.getItemByID(itemID)
+      const item = itemCatalog.getByID(itemID)
 
       return accumulator += (item.weight * quantity)
     }

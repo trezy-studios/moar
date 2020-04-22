@@ -2,15 +2,19 @@
   ol {
     display: grid;
     overflow: auto;
-    grid-auto-rows: 16px;
-    grid-template-columns: repeat(4, 16px);
+    grid-auto-rows: calc(16px * var(--pixel-multiplier));
+    grid-template-columns: repeat(4, calc(16px * var(--pixel-multiplier)));
   }
 
-  .item {
-    background-image: url(/game-assets/grid-slot.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 16px;
-    width: 16px;
+  .inventory-slot {}
+
+  .inventory-item {
+    cursor: var(--move-cursor);
+    transition-duration: 0.2s;
+    transition-property: opacity;
+
+    &.is-dragging {
+      opacity: 0.5;
+    }
   }
 }

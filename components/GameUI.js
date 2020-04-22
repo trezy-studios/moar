@@ -6,6 +6,7 @@ import React from 'react'
 
 
 // Local imports
+import { Hotbar } from './Hotbar'
 import { InventoryPanel } from './InventoryPanel'
 import { QuickStats } from './QuickStats'
 
@@ -15,8 +16,17 @@ import { QuickStats } from './QuickStats'
 
 const GameUI = () => (
   <div className="game-ui">
-    <QuickStats />
-    <InventoryPanel />
+    <div className="quick-stats-container">
+      <QuickStats />
+    </div>
+
+    <div className="hotbar-container">
+      <Hotbar />
+    </div>
+
+    <div className="panels-container">
+      <InventoryPanel />
+    </div>
   </div>
 )
 

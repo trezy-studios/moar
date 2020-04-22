@@ -1,0 +1,5 @@
+:root {
+  --pixel-multiplier: 4;
+
+  --panel-inset: calc(2px * var(--pixel-multiplier));
+}

@@ -5,7 +5,6 @@ import React, {
   useState,
 } from 'react'
 import { useCountUp } from 'react-countup'
-import faker from 'faker'
 import PropTypes from 'prop-types'
 
 
@@ -14,102 +13,20 @@ import PropTypes from 'prop-types'
 
 // Local imports
 import { getTotalInventoryWeight } from '../helpers/getTotalInventoryWeight'
-import { ItemCatalog } from '../helpers/ItemCatalog'
+import { InventoryItem } from './InventoryItem'
+import { InventorySlot } from './InventorySlot'
+import { AllCatalogs } from '../helpers/AllCatalogs'
 
 
 
 
 
-const InventoryPanel = props => {
-  const {
-    items,
-    slots,
-  } = props
+const InventoryPanel = () => {
   const {
     current: itemCatalog,
-  } = useRef(new ItemCatalog)
+  } = useRef(AllCatalogs.items)
 
-  const totalWeight = getTotalInventoryWeight({
-    itemCatalog,
-    shouldRound: true,
-    slots,
-  })
-
-  const {
-    countUp: totalWeightCountUp,
-    update: updateTotalWeight,
-  } = useCountUp({ end: totalWeight })
-
-  useEffect(() => updateTotalWeight(totalWeight), [totalWeight])
-
-  return (
-    <section
-      className="framed inventory slide-out-panel"
-      id="player-inventory">
-      <header>
-        Inventory
-      </header>
-
-      <div className="framed-content framed-dark">
-        <ol>
-          {Object.entries(slots).map(([slot, itemData]) => {
-            const item = itemCatalog.getItemByID(itemData?.itemID)
-
-            return (
-              <li
-                className="item"
-                key={slot}>
-                {Boolean(item) && (
-                  <img src={`/game-assets/items/${item.type}/${item.safeName}.png`} />
-                )}
-              </li>
-            )
-          })}
-          {/* {Object.entries(items).map(([id, item]) => (
-            <li
-              className="item"
-              key={id}>
-              <img
-                alt={`Picture of ${item.name}`}
-                src={item.image} />
-
-              {item.name} x{item.quantity}
-              {(item.weight > 0) && (
-                <span>({item.weight * item.quantity}kg)</span>
-              )}
-            </li>
-          ))} */}
-        </ol>
-      </div>
-
-      <footer>
-        {totalWeightCountUp}kg
-      </footer>
-    </section>
-  )
-}
-
-const createItem = () => {
-  const name = faker.commerce.productName()
-  const size = 60
-
-  return {
-    id: faker.random.uuid(),
-    image: `https://generative-placeholders.glitch.me/image?width=${size}&height=${size}&style=cellular-automata&cells=50&id=${name}`,
-    name: name,
-    quantity: Math.ceil(Math.random() * 99),
-    weight: Math.floor(Math.random() * 10),
-  }
-}
-
-const createInventory = (size = 100) => ({
-  items: Array.from(Array(size), createItem).reduce((accumulator, item) => {
-    accumulator[item.id] = item
-    delete item.id
-    return accumulator
-  }, {}),
-
-  slots: {
+  const [slots, setSlots] = useState({
     0: {
       itemID: 1,
       quantity: 24,
@@ -139,15 +56,64 @@ const createInventory = (size = 100) => ({
     17: null,
     18: null,
     19: null,
-  },
-})
+  })
 
-InventoryPanel.defaultProps = {
-  ...createInventory(),
-}
+  const totalWeight = getTotalInventoryWeight({
+    shouldRound: true,
+    slots,
+  })
 
-InventoryPanel.propTypes = {
-  items: PropTypes.object,
+  const {
+    countUp: totalWeightCountUp,
+    update: updateTotalWeight,
+  } = useCountUp({ end: totalWeight })
+
+  const onMoveItem = (fromSlot, toSlot) => {
+    setSlots(oldSlots => {
+      const slotsClone = { ...oldSlots }
+
+      const item = slotsClone[fromSlot]
+      const itemToSwap = slotsClone[toSlot]
+
+      slotsClone[fromSlot] = itemToSwap
+      slotsClone[toSlot] = item
+
+      return slotsClone
+    })
+  }
+
+  useEffect(() => updateTotalWeight(totalWeight), [totalWeight])
+
+  return (
+    <section
+      className="framed inventory slide-out-panel"
+      data-open
+      id="player-inventory">
+      <header>Inventory</header>
+
+      <div className="framed-content framed-dark">
+        <ol>
+          {Object.entries(slots).map(([slot, itemData]) => (
+            <InventorySlot
+              key={slot}
+              onMoveItem={onMoveItem}
+              slot={slot}>
+              {Boolean(itemData) && (
+                <InventoryItem
+                  quantity={itemData.quantity}
+                  slot={slot}
+                  item={itemCatalog.getByID(itemData.itemID)} />
+              )}
+            </InventorySlot>
+          ))}
+        </ol>
+      </div>
+
+      <footer>
+        {totalWeightCountUp}kg
+      </footer>
+    </section>
+  )
 }
 
 

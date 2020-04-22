@@ -1,0 +1,30 @@
+button {
+  background-color: transparent;
+  background-image: none;
+  border-color: transparent;
+  border-image-repeat: repeat;
+  border-image-slice:
+    calc(6 * var(--pixel-multiplier))
+    calc(5 * var(--pixel-multiplier))
+    calc(6 * var(--pixel-multiplier))
+    fill;
+  border-image-source: url('/game-assets/ui/buttons/button-blue@4x.png');
+  border-style: solid;
+  border-width:
+    calc(6px * var(--pixel-multiplier))
+    calc(5px * var(--pixel-multiplier))
+    calc(6px * var(--pixel-multiplier));
+  color: var(--white);
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
+
+  &.danger {
+    border-image-source: url('/game-assets/ui/buttons/button-red@4x.png');
+  }
+
+  &.success {
+    border-image-source: url('/game-assets/ui/buttons/button-green@4x.png');
+  }
+}

@@ -1,0 +1,22 @@
+@keyframes loading-spinner {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -3072px 0;
+  }
+}
+
+.loading-spinner {
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-name: loading-spinner;
+  animation-timing-function: steps(48);
+  background-image: url('/game-assets/ui/loading-spinner@4x.png');
+  background-repeat: no-repeat;
+  height: calc(16px * var(--pixel-multiplier));
+  opacity: 1;
+  overflow: hidden;
+  width: calc(16px * var(--pixel-multiplier));
+}

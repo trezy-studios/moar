@@ -24,7 +24,8 @@ const HealthBar = props => {
       <FillableBar
         currentValue={currentHealth}
         isLow={currentHealth < Math.floor(maxHealth * 0.2)}
-        maxValue={maxHealth} />
+        maxValue={maxHealth}
+        showNumbers />
     </div>
   )
 }

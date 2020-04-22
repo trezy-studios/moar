@@ -3,15 +3,60 @@
   background-image: none;
   border-color: transparent;
   border-image-repeat: repeat;
-  border-image-slice: 2 4 fill;
-  border-image-source: url(/game-assets/fillable-bar.png);
+  border-image-slice: calc(2 * var(--pixel-multiplier)) calc(4 * var(--pixel-multiplier)) fill;
+  border-image-source: url('/game-assets/ui/fillable-bar@4x.png');
   border-style: solid;
-  border-width: 2px 4px;
+  border-width: calc(2px * var(--pixel-multiplier)) calc(4px * var(--pixel-multiplier));
   display: flex;
-  height: 9px;
-  padding: 1px;
+  height: calc(9px * var(--pixel-multiplier));
+  padding: calc(1px * var(--pixel-multiplier));
 
   meter {
-    height: 3px;
+    height: calc(3px * var(--pixel-multiplier));
+  }
+}
+
+.fillable-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .ratio {
+    align-items: baseline;
+    align-self: flex-start;
+    background-color: #62232f;
+    border-color: #222;
+    border-style: solid;
+    border-width: calc(1px * var(--pixel-multiplier));
+    border-top-width: 0;
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% calc(100% - (1px * var(--pixel-multiplier))),
+      calc(100% - (1px * var(--pixel-multiplier))) calc(100% - (1px * var(--pixel-multiplier))),
+      calc(100% - (1px * var(--pixel-multiplier))) 100%,
+      calc(1px * var(--pixel-multiplier)) 100%,
+      calc(1px * var(--pixel-multiplier)) calc(100% - (1px * var(--pixel-multiplier))),
+      0 calc(100% - (1px * var(--pixel-multiplier))),
+    );
+    color: var(--white);
+    display: grid;
+    font-size: calc(4px * var(--pixel-multiplier));
+    grid-template-columns: repeat(2, 1fr);
+    line-height: 0.7;
+    margin-left: calc(4px * var(--pixel-multiplier));
+    padding:
+      0
+      calc(2px * var(--pixel-multiplier))
+      calc(1px * var(--pixel-multiplier));
+    vertical-align: bottom;
+
+    > :first-child {
+      font-size: 1.5em;
+      text-align: right;
+    }
+
+    > :last-child {
+      text-align: left;
+    }
   }
 }

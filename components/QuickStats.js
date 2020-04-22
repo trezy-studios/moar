@@ -11,7 +11,7 @@ import PropTypes from 'prop-types'
 // Local imports
 import { HealthBar } from './HealthBar'
 import { ManaBar } from './ManaBar'
-import { useInterval } from '../effects'
+// import { useInterval } from '../effects'
 
 
 
@@ -27,10 +27,10 @@ const QuickStats = props => {
   const [currentMana, setCurrentMana] = useState(props.currentMana)
 
   // TODO: Remove this in favor of real health and mana values
-  useInterval(() => {
-    setCurrentHealth(Math.round(Math.random() * maxHealth))
-    setCurrentMana(Math.round(Math.random() * maxMana))
-  }, 2000)
+  // useInterval(() => {
+  //   setCurrentHealth(Math.round(Math.random() * maxHealth))
+  //   setCurrentMana(Math.round(Math.random() * maxMana))
+  // }, 5000)
 
   return (
     <section className="quick-stats">
@@ -44,10 +44,6 @@ const QuickStats = props => {
         <HealthBar
           currentHealth={currentHealth}
           maxHealth={maxHealth} />
-
-        <span aria-label="Current Health">{currentHealth}</span>
-        <span aria-hidden>{' / '}</span>
-        <span aria-label="Maximum Health">{maxHealth}</span>
       </div>
 
       <div
@@ -56,10 +52,6 @@ const QuickStats = props => {
         <ManaBar
           currentMana={currentMana}
           maxMana={maxMana} />
-
-        <span aria-label="Current Mana">{currentMana}</span>
-        <span aria-hidden>{' / '}</span>
-        <span aria-label="Maximum Mana">{maxMana}</span>
       </div>
     </section>
   )
@@ -68,7 +60,7 @@ const QuickStats = props => {
 QuickStats.defaultProps = {
   currentHealth: 68,
   currentMana: 24,
-  maxHealth: 100,
+  maxHealth: 1200,
   maxMana: 100,
   name: 'Blorp the BARDbarian',
 }

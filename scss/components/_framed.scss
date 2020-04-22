@@ -2,16 +2,29 @@
   display: flex;
   flex-direction: column;
 
+  &.framed-horizontal {
+    flex-direction: row;
+  }
+
+  &.framed-full,
   > footer,
   > header,
   > .framed-content {
     border-color: transparent;
-    border-image-outset: 1px;
+    border-image-outset: calc(1px * var(--pixel-multiplier));
     border-image-repeat: repeat;
-    border-image-slice: 8 fill;
-    border-image-source: url(/game-assets/ui-frame.png);
+    border-image-slice: calc(8 * var(--pixel-multiplier)) fill;
+    border-image-source: url('/game-assets/ui/ui-frame@4x.png');
     border-style: solid;
-    border-width: 8px;
+    border-width: calc(8px * var(--pixel-multiplier));
+  }
+
+  &.framed-full {
+    &.framed-dark {
+      border-image-slice: calc(5 * var(--pixel-multiplier)) fill;
+      border-image-source: url('/game-assets/ui/ui-frame-dark@4x.png');
+      border-width: calc(5px * var(--pixel-multiplier));
+    }
   }
 
   > .framed-content {
@@ -22,10 +35,10 @@
     flex-shrink: 1;
 
     &.framed-dark {
-      border-left-width: 5px;
-      border-image-slice: 5 fill;
-      border-image-source: url(/game-assets/ui-frame-dark.png);
-      border-right-width: 5px;
+      border-left-width: calc(5px * var(--pixel-multiplier));
+      border-image-slice: calc(5 * var(--pixel-multiplier)) fill;
+      border-image-source: url('/game-assets/ui/ui-frame-dark@4x.png');
+      border-right-width: calc(5px * var(--pixel-multiplier));
     }
   }
 
@@ -38,33 +51,33 @@
     &:after,
     &:before {
       border-image-repeat: repeat;
-      border-image-slice: 4 6 3;
-      border-image-source: url(/game-assets/ui-frame-horizontal-break.png);
+      border-image-slice: calc(4 * var(--pixel-multiplier)) calc(6 * var(--pixel-multiplier)) calc(3 * var(--pixel-multiplier));
+      border-image-source: url('/game-assets/ui/ui-frame-horizontal-break@4x.png');
       border-style: solid;
-      border-width: 4px 6px 3px;
+      border-width: calc(4px * var(--pixel-multiplier)) calc(6px * var(--pixel-multiplier)) calc(3px * var(--pixel-multiplier));
       content: '';
       display: block;
       height: 0;
       left: 0;
-      margin-left: -8px;
-      margin-right: -8px;
+      margin-left: calc(-8px * var(--pixel-multiplier));
+      margin-right: calc(-8px * var(--pixel-multiplier));
       position: absolute;
       right: 0;
       z-index: 1;
     }
 
     &:after {
-      top: calc(100% - 1px);
+      top: calc(100% - calc(1px * var(--pixel-multiplier)));
     }
 
     &:before {
-      bottom: calc(100% - 1px);
+      bottom: calc(100% - calc(1px * var(--pixel-multiplier)));
     }
   }
 
   header {
     border-bottom-width: 0;
-    margin-bottom: 5px;
+    margin-bottom: calc(5px * var(--pixel-multiplier));
 
     &:before {
       display: none;
@@ -73,7 +86,7 @@
 
   footer {
     border-top-width: 0;
-    margin-top: 5px;
+    margin-top: calc(5px * var(--pixel-multiplier));
 
     &:after {
       display: none;

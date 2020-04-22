@@ -1,0 +1,8 @@
+@function colorWithAlpha($color, $alpha) {
+  @return hsla(
+    var(--#{$color}-h),
+    var(--#{$color}-s),
+    var(--#{$color}-l),
+    $alpha,
+  );
+}

@@ -1,0 +1,9 @@
+@mixin generateHSLCustomProperties($name, $h, $s, $l) {
+  --#{$name}-h: calc(#{$h} + var(--hue-shift));
+  --#{$name}-s: #{$s};
+  --#{$name}-l: #{$l};
+
+  --#{$name}-hsl: var(--#{$name}-h), var(--#{$name}-s), var(--#{$name}-l);
+
+  --#{$name}: hsl(var(--#{$name}-hsl));
+}

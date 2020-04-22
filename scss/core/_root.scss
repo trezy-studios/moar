@@ -11,10 +11,12 @@ body, html {
 }
 
 html {
+  cursor: var(--pointer-cursor-url), auto;
   font-size: 10px;
 }
 
 body {
+  background-color: #222;
   font-family: Pixelar;
-  font-size: 12px;
+  font-size: calc(8px * var(--pixel-multiplier));
 }

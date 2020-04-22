@@ -24,7 +24,8 @@ const ManaBar = props => {
       <FillableBar
         currentValue={currentMana}
         isLow={currentMana < Math.floor(maxMana * 0.2)}
-        maxValue={maxMana} />
+        maxValue={maxMana}
+        showNumbers />
     </div>
   )
 }

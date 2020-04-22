@@ -21,25 +21,28 @@ import {
 
 const Canvas = () => {
   const canvasElementRef = useRef(null)
-
   const handleResize = () => {
     const canvasElement = canvasElementRef?.current
 
     if (canvasElement) {
-      canvasElement.setAttribute('height', document.body.clientHeight)
-      canvasElement.setAttribute('width', document.body.clientWidth)
+      canvasElement.setAttribute('height', window.innerHeight)
+      canvasElement.setAttribute('width', window.innerWidth)
     }
   }
 
   handleResize()
-  useEvent(window, 'resize', handleResize)
+  useEvent({
+    callback: handleResize,
+    event: 'resize',
+    target: window,
+  })
   useGameLoop(canvasElementRef)
 
   return (
     <canvas
-      height={document.body.clientHeight}
+      height={window.innerHeight}
       ref={canvasElementRef}
-      width={document.body.clientWidth} />
+      width={window.innerWidth} />
   )
 }
 

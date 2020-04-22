@@ -1,9 +1,14 @@
 .slide-out-panel {
-  --panel-inset: 2px;
+  // bottom: var(--panel-inset);
+  height: 100%;
+  // left: 100%;
+  // position: absolute;
+  // top: var(--panel-inset);
+  transform: translateX(110%);
+  transition-duration: 0.2s;
+  transition-property: transform;
 
-  bottom: var(--panel-inset);
-  left: 100%;
-  position: absolute;
-  top: var(--panel-inset);
-  transform: translateX(calc((100% + var(--panel-inset)) * -1));
+  &[data-open] {
+    transform: translateX(0);
+  }
 }

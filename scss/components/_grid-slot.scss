@@ -1,0 +1,16 @@
+.grid-slot {
+  background-image: url('/game-assets/ui/grid-slot@4x.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  height: calc(16px * var(--pixel-multiplier));
+  width: calc(16px * var(--pixel-multiplier));
+
+  &.is-dragged-over {
+    background-image:
+      radial-gradient(
+        colorWithAlpha('green', 0.2),
+        var(--transparent),
+      ),
+      url('/game-assets/ui/grid-slot@4x.png');
+  }
+}

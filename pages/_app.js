@@ -7,9 +7,11 @@ import '../scss/app.scss'
 
 
 // Module imports
+import { DndProvider } from 'react-dnd'
 import { createFirestoreInstance } from 'redux-firestore'
 import { Provider } from 'react-redux'
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
+import DNDHTML5Backend from 'react-dnd-html5-backend'
 import React from 'react'
 import withRedux from 'next-redux-wrapper'
 
@@ -48,7 +50,9 @@ const MyApp = props => {
   return (
     <Provider store={store}>
       <ReactReduxFirebaseProvider {...rrfProps}>
-        <Component {...pageProps} />
+        <DndProvider backend={DNDHTML5Backend}>
+          <Component {...pageProps} />
+        </DndProvider>
       </ReactReduxFirebaseProvider>
     </Provider>
   )

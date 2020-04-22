@@ -1,0 +1,10 @@
+.hotbar-container {
+  justify-content: center;
+  display: flex;
+  padding: var(--panel-inset);
+}
+
+.hotbar {
+  display: flex;
+  width: auto;
+}

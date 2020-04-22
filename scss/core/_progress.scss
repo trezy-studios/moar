@@ -1,0 +1,27 @@
+progress {
+  appearance: none;
+  background-color: var(--transparent);
+  background-image: none;
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+  width: 100%;
+
+  &::-moz-progress-bar,
+  &::-webkit-progress-value {
+    background-color: var(--progress-fill-color);
+    background-image: none;
+    border: 0;
+    clip-path: polygon(
+      0 0,
+      calc(100% - (2px * var(--pixel-multiplier))) 0,
+      calc(100% - (2px * var(--pixel-multiplier))) calc(1px * var(--pixel-multiplier)),
+      calc(100% - (1px * var(--pixel-multiplier))) calc(1px * var(--pixel-multiplier)),
+      calc(100% - (1px * var(--pixel-multiplier))) calc(2px * var(--pixel-multiplier)),
+      100% calc(2px * var(--pixel-multiplier)),
+      100% calc(3px * var(--pixel-multiplier)),
+      0 calc(3px * var(--pixel-multiplier)),
+    );
+    margin-right: calc(-3px * var(--pixel-multiplier));
+  }
+}

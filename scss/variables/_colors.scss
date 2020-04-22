@@ -1,0 +1,17 @@
+:root {
+  --hue-shift: 0deg;
+
+  @include generateHSLCustomPropertiesFromColor('black', #222);
+  @include generateHSLCustomPropertiesFromColor('blue', #5698cc);
+  @include generateHSLCustomPropertiesFromColor('green', #4ba747);
+  @include generateHSLCustomPropertiesFromColor('orange', #ee8e2e);
+  @include generateHSLCustomPropertiesFromColor('red', #da4e38);
+  @include generateHSLCustomPropertiesFromColor('white', white);
+
+  --transparent: transparent;
+
+  --background-color: var(--black);
+  --text-color: var(--white);
+
+  --progress-fill-color: var(--green);
+}
