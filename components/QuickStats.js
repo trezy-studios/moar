@@ -33,7 +33,11 @@ const QuickStats = props => {
   // }, 5000)
 
   return (
-    <section className="quick-stats">
+    <section
+      className="quick-stats"
+      data-animate
+      data-animation="fade-in-from-top"
+      data-animation-duration="0.5s">
       <div className="character-name">
         <span>{name}</span>
       </div>

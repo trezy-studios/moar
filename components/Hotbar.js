@@ -18,7 +18,11 @@ const Hotbar = props => {
   const { slots } = props
 
   return (
-    <ol className="framed framed-dark framed-full framed-horizontal hotbar">
+    <ol
+      className="framed framed-dark framed-full framed-horizontal hotbar"
+      data-animate
+      data-animation="fade-in-from-bottom"
+      data-animation-duration="0.5s">
       {Object.entries(slots).map(([slotKey, slot]) => {
         if (!slot) {
           return (
