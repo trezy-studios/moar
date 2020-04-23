@@ -1,0 +1,62 @@
+@keyframes animate-character {
+  from {
+    background-position-x: var(--character-position-x);
+  }
+
+  to {
+    background-position-x: calc(-16px * var(--character-animation-frame-count) * var(--pixel-multiplier) + var(--character-position-x));
+  }
+}
+
+.character-preview {
+  --character-direction-offset-y: 0px;
+  --character-gender-offset-y: 0px;
+  --character-state-offset-x: 0px;
+
+  --character-position-x: var(--character-state-offset-x);
+  --character-position-y: calc(var(--character-direction-offset-y) + var(--character-gender-offset-y));
+
+  animation-duration: var(--character-animation-duration);
+  animation-name: animate-character;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(var(--character-animation-frame-count), end);
+  background-repeat: no-repeat;
+  background-position: var(--character-position-x) var(--character-position-y);
+  height: calc(32px * var(--pixel-multiplier));
+  margin-top: -32px;
+  width: calc(16px * var(--pixel-multiplier));
+
+  &[data-character-type=elf] {
+    background-image: url('/game-assets/characters/elf@4x.png');
+  }
+
+  &[data-character-type=knight] {
+    background-image: url('/game-assets/characters/knight@4x.png');
+  }
+
+  &[data-character-type=lizard] {
+    background-image: url('/game-assets/characters/lizard@4x.png');
+  }
+
+  &[data-character-type=wizard] {
+    background-image: url('/game-assets/characters/wizard@4x.png');
+  }
+
+  &[data-character-direction=left] {
+    --character-direction-offset-y: calc(-32px * var(--pixel-multiplier));
+  }
+
+  &[data-character-gender=female] {
+    --character-gender-offset-y: calc(-64px * var(--pixel-multiplier));
+  }
+
+  &[data-character-state=idle],
+  &[data-character-state=running] {
+    --character-animation-duration: 0.5s;
+    --character-animation-frame-count: 4;
+  }
+
+  &[data-character-state=running] {
+    --character-state-offset-x: calc(-64px * var(--pixel-multiplier));
+  }
+}

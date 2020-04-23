@@ -1,6 +1,5 @@
 [data-animate] {
-  &[data-animate='true'],
-  &:not([data-animate='false']) {
+  &[data-animate]:not([data-animate='false']) {
     animation-fill-mode: both;
 
     @each $fill-mode in (backwards, forwards, none) {

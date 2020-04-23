@@ -5,16 +5,34 @@
 
 .quick-stats {
   color: var(--white);
-  display: flex;
-  flex-direction: column;
-  width: 20%;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas:
+    'preview  name'
+    'preview  health-bar'
+    'preview  mana-bar';
 
   .health-bar,
   .mana-bar {
     flex-shrink: 0;
   }
 
-  .health-bar {
-    margin-bottom: calc(2px * var(--pixel-multiplier));
+  .character-preview-wrapper {
+    align-items: center;
+    display: flex;
+    grid-area: preview;
+    justify-content: center;
+  }
+
+  .character-name {
+    grid-area: name;
+  }
+
+  .character-health {
+    grid-area: health-bar;
+  }
+
+  .character-mana {
+    grid-area: mana-bar;
   }
 }

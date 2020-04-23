@@ -9,6 +9,7 @@ import PropTypes from 'prop-types'
 
 
 // Local imports
+import { CharacterPreview } from './CharacterPreview'
 import { HealthBar } from './HealthBar'
 import { ManaBar } from './ManaBar'
 // import { useInterval } from '../effects'
@@ -38,6 +39,13 @@ const QuickStats = props => {
       data-animate
       data-animation="fade-in-from-top"
       data-animation-duration="0.5s">
+
+      <div className="character-preview-wrapper framed framed-full">
+        <CharacterPreview
+          type="lizard"
+          gender="male" />
+      </div>
+
       <div className="character-name">
         <span>{name}</span>
       </div>
