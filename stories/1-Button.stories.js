@@ -31,7 +31,7 @@ export default {
 
 
 
-export const Text = () => (
+export const Normal = () => (
   <Button
     disabled={boolean('Disabled', false)}
     onClick={action('clicked')}
@@ -39,11 +39,7 @@ export const Text = () => (
       Default: 'default',
       Danger: 'danger',
       Success: 'success',
-    })}>
+    }, 'default')}>
     {text('Label', 'Button')}
   </Button>
 )
-
-Text.story = {
-  name: 'Normal',
-}
