@@ -29,8 +29,12 @@ const FillableBar = props => {
     value: props.maxValue,
   }))
 
-  useEffect(() => setCurrentValue({ value: props.currentValue }), [props.currentValue])
-  useEffect(() => setMaxValue({ value: props.maxValue }), [props.maxValue])
+  useEffect(() => {
+    setCurrentValue({ value: props.currentValue })
+  }, [props.currentValue])
+  useEffect(() => {
+    setMaxValue({ value: props.maxValue })
+  }, [props.maxValue])
 
   return (
     <animated.div
