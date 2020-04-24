@@ -30,10 +30,24 @@ CharacterPreview.defaultProps = {
 }
 
 CharacterPreview.propTypes = {
-  direction: PropTypes.string,
-  gender: PropTypes.string.isRequired,
-  state: PropTypes.string,
-  type: PropTypes.string.isRequired,
+  direction: PropTypes.oneOf([
+    'left',
+    'right',
+  ]),
+  gender: PropTypes.oneOf([
+    'female',
+    'male',
+  ]).isRequired,
+  state: PropTypes.oneOf([
+    'idle',
+    'running',
+  ]),
+  type: PropTypes.oneOf([
+    'elf',
+    'knight',
+    'lizard',
+    'wizard',
+  ]).isRequired,
 }
 
 
