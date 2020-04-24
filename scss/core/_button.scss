@@ -24,6 +24,10 @@ button {
     border-image-source: url('/game-assets/ui/buttons/button-red@4x.png');
   }
 
+  &.default {
+    border-image-source: url('/game-assets/ui/buttons/button-blue@4x.png');
+  }
+
   &.success {
     border-image-source: url('/game-assets/ui/buttons/button-green@4x.png');
   }
